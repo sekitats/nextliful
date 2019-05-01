@@ -5,7 +5,7 @@
     "export": "next export",
     "deploy": "next build && next export",
     "postinstall": "npm run getContent",
-    "getContent": "babel-node scripts/getContent.js install",
+    "getContent": "babel-node bin/www install",
     "start": "next start"
   },
   "dependencies": {
