@@ -74,7 +74,6 @@ const getcontent = async () => {
   }
 }
 
-if (process.argv[2] === 'install') {
-  mkdirp(CONTENT.DIR)
-  getcontent()
-}
+mkdirp(CONTENT.DIR)
+getcontent()
+console.log('post installed!')
