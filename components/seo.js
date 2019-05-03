@@ -19,7 +19,6 @@ const Seo = (props) => {
       <meta itemProp='description' content={props.post && props.post.description || props.author.title} />
       <meta itemProp='keywords' content={props.post && props.post.tags} />
       <link rel="shortcut icon" href="favicon" />
-      <link rel='stylesheet' href='static/style.css' />
     </Head>
   )
 }
