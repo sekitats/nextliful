@@ -1,6 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 import Link from 'next/link'
+import Seo from '../components/seo'
 import Nav from '../components/nav'
 import Header from '../components/header'
 import Footer from '../components/footer'
@@ -33,13 +34,14 @@ export default class IndexPage extends React.Component {
   render () {
     return (
       <React.Fragment>
+        <Seo {...this.props} />
         <Nav />
         <main>
           <section id='wrapper'>
-            <Header />
+            <Header author={this.props.author} />
             {this.renderPosts()}
             <nav id='post-nav' />
-            <Footer />
+            <Footer author={this.props.author} />
           </section>
         </main>
       </React.Fragment>

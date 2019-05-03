@@ -1,13 +1,13 @@
 import Link from 'next/link'
 
-export default () => (
+export default (props) => (
   <footer id='post-meta' className='clearfix'>
     <Link href='/about'>
       <a>
-        <img className='avatar' src='/static/img/profile.png' />
+        <img className='avatar' src={props.author.image.src} />
         <div>
-          <span className='dark'>Tatsuhiko Seki</span>
-          <span>Programmer & Composer</span>
+          <span className='dark'>{props.author.name}</span>
+          <span>{props.author.title}</span>
         </div>
       </a>
     </Link>

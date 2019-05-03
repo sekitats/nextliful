@@ -1,14 +1,14 @@
 import Link from 'next/link'
 
-export default () => (
+export default (props) => (
   <div className='profile'>
     <section id='wrapper'>
       <header id='header'>
         <Link href='/about' prefetch>
-          <a><img id='avatar' className='2x' src='/static/img/profile.png' /></a>
+          <a><img id='avatar' className='2x' src={props.author.image.src} /></a>
         </Link>
-        <h1>Tatsuhiko Seki</h1>
-        <h2>Programmer & Composer</h2>
+        <h1>{props.author.name}</h1>
+        <h2>{props.author.title}</h2>
       </header>
     </section>
   </div>
