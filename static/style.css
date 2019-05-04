@@ -398,6 +398,8 @@ nav.main-nav a.cta {
 }
 
 #post-list .dates {
+  display: flex;
+  justify-content: space-between;
   font: 300 14px/1 Helvetica Neue,helvetica,Arial,sans-serif;
   color: #bbb
 }

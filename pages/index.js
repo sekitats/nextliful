@@ -6,7 +6,6 @@ import Nav from '../components/nav'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import SUMMARY_JSON from '../contentful/summary.json'
-import '../styles/style.scss'
 
 export default class IndexPage extends React.Component {
   renderPosts() {
@@ -20,6 +19,7 @@ export default class IndexPage extends React.Component {
                 <h2>{post.title}</h2>
                 <p>{post.description}</p>
                 <aside className="dates">
+                  <div>{post.tags && post.tags.map(tag => tag).join(', ')}</div>
                   <span>{moment(post.publishDate).format('MMM D YYYY')}</span>
                 </aside>
               </a>
@@ -53,6 +53,8 @@ IndexPage.getInitialProps = () => {
   return {
     posts: Object.keys(SUMMARY_JSON).map((slug) => {
       return SUMMARY_JSON[slug]
+    }).sort((x, y) => {
+      return x.publishDate < y.publishDate
     })
   }
 }

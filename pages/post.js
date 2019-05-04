@@ -4,7 +4,6 @@ import Seo from '../components/seo'
 import Nav from '../components/nav'
 import PostMeta from '../components/postMeta'
 import Footer from '../components/footer'
-import '../styles/style.scss'
 
 export default class PostPage extends React.Component {
   render() {    
