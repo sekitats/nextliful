@@ -6,7 +6,7 @@ import PostMeta from '../components/postMeta'
 import Footer from '../components/footer'
 
 export default class PostPage extends React.Component {
-  render() {    
+  render() {
     return (
       <React.Fragment>
         <Seo {...this.props} />
@@ -17,11 +17,15 @@ export default class PostPage extends React.Component {
               <header>
                 <h1>{this.props.post.title}</h1>
                 <aside className="headline">
-                  <span>{moment(this.props.post.publishDate).format('MMM D YYYY')}</span>
+                  <span>
+                    {moment(this.props.post.publishDate).format('MMM D YYYY')}
+                  </span>
                 </aside>
               </header>
-              <section id='post-body'>
-                <div dangerouslySetInnerHTML={{ __html: this.props.post.body }} />
+              <section id="post-body">
+                <div
+                  dangerouslySetInnerHTML={{ __html: this.props.post.body }}
+                />
               </section>
             </article>
             <PostMeta author={this.props.author} />
@@ -33,7 +37,7 @@ export default class PostPage extends React.Component {
   }
 }
 
-PostPage.getInitialProps = async ({query}) => {
-  const res = await import (`../contentful/${query.slug}`)
+PostPage.getInitialProps = async ({ query }) => {
+  const res = await import(`../contentful/${query.slug}`)
   return { post: res }
 }

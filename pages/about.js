@@ -4,12 +4,12 @@ import Nav from '../components/nav'
 import Header from '../components/header'
 import Footer from '../components/footer'
 
-const About = (props) => {
+const About = props => {
   return (
     <React.Fragment>
       <Seo {...props} />
       <Nav />
-      <section id='wrapper'>
+      <section id="wrapper">
         <Header author={props.author} />
         <p dangerouslySetInnerHTML={{ __html: props.author.shortBio }} />
         <hr />
