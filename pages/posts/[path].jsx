@@ -11,7 +11,7 @@ import {
   getPerson,
 } from "../../utils/contentful";
 import { marked } from "marked";
-import hljs from "highlight.js/lib/core";
+import hljs from "highlight.js";
 import "highlight.js/styles/github-dark-dimmed.css";
 
 marked.setOptions({
