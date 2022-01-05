@@ -1,22 +1,9 @@
-const withSass = require('@zeit/next-sass')
-const merge = require('webpack-merge')
-const SUMMARY = require('./contentful/summary.json')
+require('dotenv').config();
 
-module.exports = Object.assign({}, withSass({
-  cssModules: true
-}), {
-  devtool: 'inline-source-map',
-
-  exportPathMap: () => {
-    const pathMap = Object.keys(SUMMARY).reduce((acc, slug) => {
-      acc[`/post/${slug}`] = { page: '/post', query: { slug: slug }} 
-      return acc
-    }, {})    
-
-    return {
-      '/': { page: '/' },
-      '/about': { page: '/about' },
-      ...pathMap
-    }
-  }
-})
+module.exports = {
+  trailingSlash: true,
+  env: {
+    NEXT_PUBLIC_CONTENTFUL_SPACE: process.env.CONTENTFUL_SPACE,
+    NEXT_PUBLIC_CONTENTFUL_TOKEN: process.env.CONTENTFUL_TOKEN,
+  },
+}
