@@ -28,7 +28,7 @@ ul li {
 }
 `;
 
-const About = props => {
+export default function About(props) {
   const [isMounted, setMount] = useState(false);
 
   useEffect(() => {
@@ -54,8 +54,6 @@ const About = props => {
     </>
   )
 }
-
-export default About
 
 export async function getStaticProps() {
   const author = await getPerson();

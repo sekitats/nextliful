@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import styled from "styled-components";
 import { format, parseISO } from "date-fns";
 import Nav from '../../components/Nav'
 import PostMeta from '../../components/PostMeta'
@@ -10,9 +11,8 @@ import {
   getPerson,
 } from "../../utils/contentful";
 import { marked } from "marked";
-import hljs from "highlight.js";
+import hljs from "highlight.js/lib/core";
 import "highlight.js/styles/github-dark-dimmed.css";
-import styled from "styled-components";
 
 marked.setOptions({
   highlight: (code, lang) => {
@@ -126,7 +126,7 @@ h2.subtitle {
 }
 `
 
-const Post = (props) =>{
+export default function Post(props) {
   const [isMounted, setMount] = useState(false);
 
   useEffect(() => {
@@ -167,8 +167,6 @@ const Post = (props) =>{
     </>
   );
 }
-
-export default Post
 
 export async function getStaticPaths() {
   const paths = await getAllPostPaths();

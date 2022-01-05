@@ -93,6 +93,14 @@ const Main = styled.main`
 
 `;
 
+const Posts = ({ posts }) => (
+  <ul id="post-list">
+    {posts.map(post => {
+      return !post.publishDate ? null : <Post key={post.id} post={post} />
+    })}
+  </ul>
+)
+
 export default function PostIndex({ posts, author }) {
   return (
     <>
@@ -100,12 +108,7 @@ export default function PostIndex({ posts, author }) {
       <Main>
         <section id='wrapper'>
            <Header author={author} />
-           <ul id="post-list">
-            {posts.map(post => {
-              return !post.publishDate ? null : <Post key={post.id} post={post} />
-            })}
-           </ul>
-           <nav id='post-nav' />
+           <Posts posts={posts} />
            <Footer author={author} />
          </section>
       </Main>
