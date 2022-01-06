@@ -22,11 +22,11 @@ a.symbol:hover {
 export default ({ author }) => (
   <Wrapper id='footer'>
     <div id="social">
-      <a className="symbol" href="https://facebook.com/" target="_blank">
-        circlefacebook
-      </a>
-      <a className="symbol" href="https://tiwtter.com" target="_blank">
+      <a className="symbol" href={author.twitter} target="_blank">
         circletwitterbird
+      </a>
+      <a className="symbol" href={author.youtube} target="_blank">
+        circleyoutube
       </a>
       <a className="symbol" href={author.github} target="_blank">
         circlegithubalt
@@ -35,28 +35,10 @@ export default ({ author }) => (
     <p className="small">© Copyright 2018 {author.name}</p>
     <p className="small">
       Powered by
-      <a href="https://nextjs.org/" target="_blank">
+      <a href="https://github.com/osekiharn/Nextliful" target="_blank">
         {" "}
-        Next.js
-      </a>{" "}
-      &amp;
-      <a href="https://www.netlify.com/" target="_blank">
-        {" "}
-        Netlify
-      </a>{" "}
-      &amp;
-      <a href="https://www.contentful.com/" target="_blank">
-        {" "}
-        Contentful
-      </a>{" "}
-      &amp;
-      <a
-        href="https://github.com/digitalcraftsman/hugo-cactus-theme"
-        target="_blank"
-      >
-        {" "}
-        Cactus theme
-      </a>
+        Nextliful
+      </a>.
     </p>
   </Wrapper>
 );

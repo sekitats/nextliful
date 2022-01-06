@@ -1,3 +1,3 @@
 # Nextliful
 
-A blog system with Next.js, Netlify, and Contentful.
+Blog system with [Next.js](https://nextjs.org/), [Netlify](https://www.netlify.com/), [Contentful](https://www.contentful.com/), and [Cactus theme](https://github.com/digitalcraftsman/hugo-cactus-theme).
