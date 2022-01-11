@@ -1,9 +1,5 @@
 import { createClient, EntryFields, Entry, Asset, Sys } from "contentful";
 
-const DEFAULT_ENTRIES_PARAMS = {
-  content_type: 'blogPost'
-};
-
 const env = process.env.ENV || "development";
 
 const config = {
@@ -17,14 +13,26 @@ const config = {
 export const client = createClient(config);
 
 export async function getPosts() {
-  const entries = await client.getEntries(DEFAULT_ENTRIES_PARAMS);
-
+  const entries = await client.getEntries({ content_type: 'blogPost' });
   return entries.items.map((item) => {
     return {
       ...item.fields,
       id: item.sys.id,
     };
   });
+}
+
+export async function getPostsByTag(tag) {
+  const entries = await client.getEntries({
+    content_type: 'blogPost',
+    'metadata.tags.sys.id[all]': tag
+  })
+  return entries.items.map(item => {
+    return {
+      ...item.fields,
+      id: item.sys.id,
+    }
+  })
 }
 
 export async function getPost(id) {
@@ -34,7 +42,7 @@ export async function getPost(id) {
 
 export async function getPostByPathName(path) {
   const entries = await client.getEntries({
-    ...DEFAULT_ENTRIES_PARAMS,
+    content_type: 'blogPost',
     'fields.slug': path,
   });
   return entries.items[0].fields;
@@ -42,7 +50,6 @@ export async function getPostByPathName(path) {
 
 export async function getAllPostPaths() {
   const items = await getPosts();
-
   return items.map(item => {
     return {
       params: {
@@ -50,6 +57,26 @@ export async function getAllPostPaths() {
       }
     }
   }) 
+}
+
+export async function getAllTagPaths() {
+  const items = await getPosts()
+  const tags = items.map(item => {
+    if (item.tags === undefined) return []
+    return item.tags
+  }).flat()
+  const uniqueTags = tags.filter((tag, i, self) => {
+    return self.indexOf(tag) === i
+  })
+
+  const paths = uniqueTags.map(tag => {
+    return {
+      params: {
+        id : encodeURI(tag).toLowerCase()
+      }
+    }
+  })
+  return paths
 }
 
 export async function getPerson() {

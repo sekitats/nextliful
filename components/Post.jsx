@@ -1,24 +1,44 @@
-import Link from 'next/link';
-import { format, parseISO } from 'date-fns'
+import Link from "next/link";
+import { format, parseISO } from "date-fns";
+
+const TagLink = ({ tags }) => {
+  let wrapper
+  if (!Array.isArray(tags)) return "";
+    wrapper = tags.map((tag, i) => {
+      let comma = ", ";
+      if (i === tags.length - 1) {
+        comma = "";
+      }
+      return (
+        <div key={tag}>
+          <Link href={`/tag/${tag.toLowerCase()}`}>
+            <a>#{tag}</a>
+          </Link>
+          {comma}
+        </div>
+      );
+    });
+  return (
+    <div className="tags">
+      {wrapper}
+    </div>
+  )
+};
 
 export default function Post({ post }) {
-  const tags = post.tags && post.tags.map((tag) => tag).join(", ")
-  const date = format(parseISO(post.publishDate), "yyyy-MM-dd")
+  const date = format(parseISO(post.publishDate), "yyyy-MM-dd");
   return (
     <li key={post.id}>
-      <Link
-        as={`/posts/${post.slug}`}
-        href={`/posts?slug=${post.slug}`}
-      >
-        <a>
-          <h2>{post.title}</h2>
-          <p>{post.description}</p>
-          <aside className="dates">
-            <div>{tags}</div>
-            <span>{date}</span>
-          </aside>
-        </a>
-      </Link>
+      <h2>
+        <Link href={`/posts/${post.slug}`}>
+          <a>{post.title}</a>
+        </Link>
+      </h2>
+      <p>{post.description}</p>
+      <aside className="footer">
+        <TagLink tags={post.tags} />
+        <span className="dates">{date}</span>
+      </aside>
     </li>
   );
-};
+}

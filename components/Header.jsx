@@ -32,15 +32,15 @@ const Wrapper = styled.div`
 }
 `
 
-export default (props) => (
+export default ({ tag, author }) => (
   <Wrapper>
     <section>
       <header id='header'>
         <Link href='/about' prefetch>
-          <a><img id='avatar' className='2x' src={props.author.image.fields.file.url} /></a>
+          <a><img id='avatar' className='2x' src={author.image.fields.file.url} /></a>
         </Link>
-        <h1>{props.author.name}</h1>
-        <h2>{props.author.title}</h2>
+        <h1>{author.name}</h1>
+        <h2>{tag ? tag : author.title}</h2>
       </header>
     </section>
   </Wrapper>

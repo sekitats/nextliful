@@ -8,7 +8,7 @@ import Footer from '../components/Footer'
 import Post from '../components/Post';
 import { getPerson, getPosts } from '../utils/contentful';
 
-const Main = styled.main`
+export const Main = styled.main`
 #post-list {
   margin-top: 40px;
   margin-bottom: 0;
@@ -39,11 +39,19 @@ const Main = styled.main`
   margin-top: 2px;
 }
 
-#post-list .dates {
+#post-list .footer {
   display: flex;
   justify-content: space-between;
   font: 300 14px/1 "Helvetica Neue", helvetica, Arial, sans-serif;
   color: #bbb;
+}
+
+#post-list .tags {
+  display: flex;
+}
+
+#post-list .dates {
+  margin-left: auto;
 }
 
 #post-list-footer {

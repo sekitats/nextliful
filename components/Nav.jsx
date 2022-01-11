@@ -32,7 +32,7 @@ const Wrapper = styled.nav`
   }
 `;
 
-const Nav = () => (
+const Nav = ({ tag }) => (
   <Wrapper>
     <Link href='/'><a>Home</a></Link>
     <Link href='/about'><a>About</a></Link>
